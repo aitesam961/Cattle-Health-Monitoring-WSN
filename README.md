@@ -4,11 +4,10 @@ The Development platform for Final Year Project ft. Cattle Health Monitoring Sys
 
 ## Development Roadmap
 * [x] Gathering information
-    * [ ] Collecting Research Papers
-    * [ ] Finding open source Projects
+    * [x] Collecting Research Papers
+    * [x] Finding open source Projects
     * [ ] Study of Internet-of-Things Integration
     * [ ] IoT Web Host platform
-    * [ ] High-Speed PCB Design
 * [ ] Hardware Design
     * [ ] Selection of Hardware Components
     * [ ] Schematic Design
