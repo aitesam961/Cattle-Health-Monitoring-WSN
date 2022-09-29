@@ -12,6 +12,8 @@ The Development platform for Final Year Project ft. Cattle Health Monitoring Sys
     * [ ] Selection of Hardware Components
     * [ ] Schematic Design
     * [ ] Peripheral Testing
+    * [ ] Components Integration
+    * [ ] System Bring-up
 * [ ] Fimrware & Software Development
     * [ ] Selection of Firmware Develpoment Platform
     * [ ] Selection of Web Connection Host
