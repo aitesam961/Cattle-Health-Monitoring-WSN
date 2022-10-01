@@ -3,7 +3,7 @@ The Development platform for Final Year Project ft. Cattle Health Monitoring Sys
 
 
 ## Development Roadmap
-* [x] Gathering information
+* [ ] Gathering information
     * [x] Collecting Research Papers
     * [x] Finding open source Projects
     * [ ] Study of Internet-of-Things Integration
