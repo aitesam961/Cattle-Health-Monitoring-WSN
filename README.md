@@ -9,7 +9,7 @@ The Development platform for Final Year Project ft. Cattle Health Monitoring Sys
     * [ ] Study of Internet-of-Things Integration
     * [ ] IoT Web Host platform
 * [ ] Hardware Design
-    * [ ] Selection of Hardware Components
+    * [x] Selection of Hardware Components
     * [ ] Schematic Design
     * [ ] Peripheral Testing
     * [ ] Components Integration
