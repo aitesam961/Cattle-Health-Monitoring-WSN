@@ -1,6 +1,6 @@
 # Documentation
 
-A folder to contain and update documentation alongwith the development of project
+A folder to contain and update documentation along with the development of project
 
 
 
