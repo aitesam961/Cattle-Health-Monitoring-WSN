@@ -1,0 +1,2 @@
+https://support.machinechat.io/hc/en-us/articles/360053865294-Create-a-Wireless-Sensor-Network-with-ESP32-Modules-and-Machinechat-s-JEDI-One
+FOR ESP32 WSN
