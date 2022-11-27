@@ -1,3 +1,3 @@
 # Software
 
-Embedded firmware, Programs, framework and codes wil reside here
+Embedded firmware, Programs, framework and codes will reside here
