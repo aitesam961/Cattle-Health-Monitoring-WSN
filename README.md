@@ -13,7 +13,7 @@ The Development platform for Final Year Project ft. Cattle Health Monitoring Sys
     * [ ] Schematic Design
     * [ ] Peripheral Testing
     * [ ] Components Integration
-    * [ ] System Bring-up
+    * [ ] Hardware System Bring-up
 * [ ] Fimrware & Software Development
     * [ ] Firmware Development & Testing for Discrete Components
     * [ ] Communication Setup b/w Hardware & Cloud Database
