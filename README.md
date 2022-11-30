@@ -2,6 +2,8 @@
 The Development platform for Final Year Project ft. Cattle Health Monitoring System using Wireless Sensor Networks
 
 
+### Project Development is under Progress
+
 ## Development Roadmap
 * [ ] Gathering information
     * [x] Collecting Research Papers

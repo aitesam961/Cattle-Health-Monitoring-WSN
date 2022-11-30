@@ -2,6 +2,6 @@
 
  https://www.olimex.com/Products/Components/Sensors/Gas/SNS-MQ135/resources/SNS-MQ135.pdf }}{\fldrslt{https://www.olimex.com/Products/Components/Sensors/Gas/SNS-MQ135/resources/SNS-MQ135.pdf
 
-## MPU-6050\par
-## MAX30102\par
-## BMP-280\par
+## MPU-6050
+## MAX30102
+## BMP-280
