@@ -1,7 +1,7 @@
 ## MQ-135 Gas Sensor<br>
  https://www.olimex.com/Products/Components/Sensors/Gas/SNS-MQ135/resources/SNS-MQ135.pdf<br>
 ## DHT11 Temp & Humidity Sensor<br>
-
+https://akizukidenshi.com/download/ds/aosong/DHT11.pdf<br>
 ## MPU-6050<br>
 https://invensense.tdk.com/products/motion-tracking/6-axis/mpu-6050/<br>
 ## MAX30102<br>
