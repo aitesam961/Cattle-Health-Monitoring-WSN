@@ -12,12 +12,12 @@
     * [x] Selecting IoT Web Host platform
 * [ ] Hardware Design
     * [x] Selection of Hardware Components
-    * [ ] Schematic Design
-    * [ ] Peripheral Testing
+    * [x] Schematic Design
+    * [x] Peripheral Testing
     * [ ] Components Integration
     * [ ] Hardware System Bring-up
 * [ ] Fimrware & Software Development
-    * [ ] Firmware Development & Testing for Discrete Components
+    * [x] Firmware Development & Testing for Discrete Components
     * [ ] Communication Setup b/w Hardware & Cloud Database
     * [ ] Master Firmware Development
     * [ ] Establishing Reliable Communication w/ Cloud Database
