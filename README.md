@@ -18,9 +18,8 @@
     * [ ] Hardware System Bring-up
 * [ ] Fimrware & Software Development
     * [x] Firmware Development & Testing for Discrete Components
-    * [ ] Communication Setup b/w Hardware & Cloud Database
+    * [ ] Establish Reliable Communication w/ Cloud Database
     * [ ] Master Firmware Development
-    * [ ] Establishing Reliable Communication w/ Cloud Database
     * [ ] Algorithm Refinement
     * [ ] Webapp UI & Dashboard Design
     * [ ] Dashboard Integration w/ Database
