@@ -1,15 +1,7 @@
 # FYP-Cattle Health Monitoring System
 
-<br>
-<<<<<<< HEAD
-The Development platform for Final Year Project ft. Cattle Health Monitoring System using Wireless Sensor Networks
-<br>
-![issues](https://img.shields.io/github/issues-raw/aitesam961/Cattle-Health-Monitoring-WSN) ![open pr](https://img.shields.io/github/issues-pr-raw/aitesam961/Cattle-Health-Monitoring-WSN.svg?)
-<br>
-=======
 
->>>>>>> 254c2fb23a6a51ce85be671339a77aae059f9fef
-### Project Development is under Progress
+=======
 
 ## Development Roadmap
 * [ ] Gathering information
