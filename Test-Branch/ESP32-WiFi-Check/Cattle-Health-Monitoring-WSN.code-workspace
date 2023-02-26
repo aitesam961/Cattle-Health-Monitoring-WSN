@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"name": "ESP32-Firebase-test",
+			"path": "../../ESP32-Firebase-test"
+		},
+		{
+			"name": "ESP32-Firebase",
+			"path": "../Setup-Files/ESP32-Firebase"
+		},
+		{
+			"name": "ESP32-MPU6050",
+			"path": "../Setup-Files/ESP32-MPU6050"
+		},
+		{
+			"name": "ESP32-WiFi-Check",
+			"path": "."
+		}
+	],
+	"settings": {}
+}
