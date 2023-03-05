@@ -53,6 +53,12 @@
 #define DHTTYPE DHT11
 // Peripheral Objects below =====================================
 // Define Firebase Data object
+
+#define gasSensor 32
+//#define gasS_trig 33
+bool dngGasDet;
+
+
 FirebaseData fbdo;
 
 FirebaseAuth auth;
@@ -78,6 +84,8 @@ Adafruit_MPU6050 mpu;
 uint8_t mpu_loop_control = 0;
 bool mpu_Orinetation ;
 String mpu_Activity ;
+
+
 
 
 
@@ -160,6 +168,12 @@ void setup()
 
   Serial.println("");
   }
+
+  //pinMode(gasS_trig, OUTPUT);
+  pinMode(gasSensor, INPUT);
+  //digitalWrite(gasS_trig,LOW)
+  dngGasDet = false;
+
   
 }
 
@@ -316,7 +330,22 @@ else {
   Serial.println("FAILED IMU Activity");
 }
 
-//=================================================
+/*================================================
+* Gas Detection
+*/
+
+//digitalWrite(gasS_trig,HIGH);
+  if(analogRead(gasSensor)>1550){
+    Serial.print("Dangerous Gas Detected");
+    dngGasDet = true;
+  }
+//digitalWrite(gasS_trig,LOW)
+if (Firebase.RTDB.setBool(&fbdo, "Node1/Dangerous Gas",dngGasDet)){
+      Serial.println("PASSED Dangerous Gas");
+}
+else {
+  Serial.println("FAILED Dangerous Gas");
+}
 
   /*
    *  Heart Rate
@@ -330,6 +359,11 @@ else {
       Overall Health Status
    */
 
-   
-    
+
+  /*=============================================
+  * Health Status Calculation
+  *
+  */
+
+  
  }
