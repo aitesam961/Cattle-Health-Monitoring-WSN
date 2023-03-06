@@ -78,12 +78,12 @@ long lastBeat = 0; //Time at which the last beat occurred
 float beatsPerMinute;
 int beatAvg;
 bool FingerON = false;
-
+uint8_t body_temperature;
 
 Adafruit_MPU6050 mpu;
 uint8_t mpu_loop_control = 0;
 bool mpu_Orinetation ;
-String mpu_Activity ;
+int mpu_Activity ;
 
 
 
@@ -109,7 +109,7 @@ void setup()
   
   // Start DHT Sensor
   dht.begin();
- 
+  Serial.println("DHT11 Initialized");
 
   config.api_key = API_KEY;
   auth.user.email = USER_EMAIL;
@@ -121,7 +121,7 @@ void setup()
   // Comment or pass false value when WiFi reconnection will control by your code or third party library
   Firebase.reconnectWiFi(true);
   Firebase.setDoubleDigits(5);
-
+  Serial.println("Firebase Communication Established");
 
   //Firebase Corner Cases
   
@@ -150,65 +150,42 @@ void setup()
   particleSensor.setPulseAmplitudeRed(0x0A); //Turn Red LED to low to indicate sensor is running
   particleSensor.setPulseAmplitudeGreen(0); //Turn off Green LED
   particleSensor.enableDIETEMPRDY(); //Enable the temp ready interrupt.
-
-
+  Serial.println("MAX30102 Initialized");
+  
 
   if (!mpu.begin()) {
     Serial.println("Failed to find MPU6050 chip");
-    Serial.println("MPU6050 Not Found!");
   }
   else{
-    Serial.println("MPU6050 Ready");
+    Serial.println("MPU6050 Initialized");
     mpu.setHighPassFilter(MPU6050_HIGHPASS_0_63_HZ);
     mpu.setMotionDetectionThreshold(1);
     mpu.setMotionDetectionDuration(20);
     mpu.setInterruptPinLatch(true);	
     mpu.setInterruptPinPolarity(true);
     mpu.setMotionInterrupt(true);
-
-  Serial.println("");
   }
 
   //pinMode(gasS_trig, OUTPUT);
   pinMode(gasSensor, INPUT);
   //digitalWrite(gasS_trig,LOW)
   dngGasDet = false;
-
-  
+  Serial.println("MQ135 Initialized");
+  Serial.println("..........");
 }
 
 void loop()
 { 
 
-  int humi = dht.readHumidity();
-  int temp = dht.readTemperature();
+  /*=====================================================
+    *
+    * Environment Temperature & Humidity Measurement
+    *  
+    */
+  uint8_t dht_humi = dht.readHumidity();
+  uint8_t dht_temp = dht.readTemperature();
   
-  Serial.println("\nLoop Begins\n");
-  if (Firebase.ready() && (millis() - sendDataPrevMillis > 15000 || sendDataPrevMillis == 0))
-  {
-    sendDataPrevMillis = millis();
-    // Write an Int number on the database path test/int
-    if (Firebase.RTDB.setInt(&fbdo, "Node1/Humidity", humi)){
-      Serial.println("PASSED Humidity");
-    }
-    else {
-      Serial.println("FAILED Humidity");
-    }
-  
-  }
 
-  
-    // Write an Float number on the database path test/float
-    if (Firebase.RTDB.setInt(&fbdo, "Node1/Environment Temperature",temp )){
-      Serial.println("PASSED Environment Temperature ");
-    }
-    else {
-      Serial.println("FAILED Environment Temperature");
-    }
-
-
-
-   
     /*=====================================================
     *
     * Heart Rate Measurement
@@ -241,25 +218,109 @@ void loop()
       }
     }
   
-    Serial.print("IR=");
+    Serial.println("Blink");
     Serial.print(irValue);
-    Serial.print(", BPM=");
     Serial.print(beatsPerMinute);
-    Serial.print(", Avg BPM=");
     Serial.print(beatAvg);
     Serial.println();
+
+    //Get Body Temperature
+    body_temperature = (particleSensor.readTemperature()+5);
+    Serial.print("temperatureC=");
+    Serial.print(body_temperature, 4);
+    
+
     if (irValue < 50000){
       Serial.print(" No finger?");
       FingerON = false;
+      beatAvg = 0;
+      body_temperature = 0;
+
     }
     else
     {
       FingerON = true;
+      
     }
   }
   Serial.println();
 
 
+    
+
+
+/*=====================================================
+    *
+    * MOTION Detection and Orientation Tracking
+
+    * 20 Iters
+*/
+for( mpu_loop_control = 0; mpu_loop_control <= 20; mpu_loop_control++){
+  if(mpu.getMotionInterruptStatus()) {
+    /* Get new sensor events with the readings */
+    sensors_event_t a, g, mpu_temp;
+    mpu.getEvent(&a, &g, &mpu_temp);
+
+    if(a.acceleration.z>5 and  a.acceleration.x >-4 or a.acceleration.x > 5 ){
+    mpu_Orinetation = false;
+    }
+    else
+    {
+        mpu_Orinetation = true;
+
+        if(a.acceleration.x <-5 &&  a.acceleration.z <-5){
+          mpu_Activity = 1;
+        }
+        else if(a.acceleration.x <5 &&  a.acceleration.z >-5){
+          mpu_Activity = 2;
+        }
+        else if(a.acceleration.x >-5 &&  a.acceleration.y >5)
+        {
+          mpu_Activity = 3;
+        }
+   }
+   
+  }
+  
+}
+
+
+/*================================================
+* Gas Detection
+*/
+
+//digitalWrite(gasS_trig,HIGH);
+  if(analogRead(gasSensor)>1550){
+    Serial.print("Dangerous Gas Detected");
+    dngGasDet = true;
+  }
+//digitalWrite(gasS_trig,LOW)
+
+
+  if (Firebase.ready() && (millis() - sendDataPrevMillis > 15000 || sendDataPrevMillis == 0))
+  {
+    sendDataPrevMillis = millis();
+    // Write an Int number on the database path test/int
+
+    //===================================================================
+
+
+    if (Firebase.RTDB.setInt(&fbdo, "Node1/Humidity", dht_humi)){
+      Serial.println("PASSED Humidity");
+    }
+    else {
+      Serial.println("FAILED Humidity");
+    }
+
+    if (Firebase.RTDB.setInt(&fbdo, "Node1/Environment Temperature",dht_temp )){
+      Serial.println("PASSED Environment Temperature ");
+    }
+    else {
+      Serial.println("FAILED Environment Temperature");
+    }
+    
+  //===================================================================
+   
     if (Firebase.RTDB.setInt(&fbdo, "Node1/Heart Rate",beatAvg)){
       Serial.println("PASSED Heart Rate");
     }
@@ -273,10 +334,6 @@ void loop()
       Serial.println("FAILED Body Contact");
     }
 
-    //Get Body Temperature
-    int body_temperature = particleSensor.readTemperature();
-    Serial.print("temperatureC=");
-    Serial.print(body_temperature, 4);
     
     if (Firebase.RTDB.setInt(&fbdo, "Node1/Body Temperature",body_temperature)){
       Serial.println("PASSED Body Temperature");
@@ -284,86 +341,34 @@ void loop()
     else {
       Serial.println("FAILED Body Temperature");
     }
-//=================================================
-// MOTION Detection and Oriontation Tracking
-
-for( mpu_loop_control = 0; mpu_loop_control <= 20; mpu_loop_control++){
-  if(mpu.getMotionInterruptStatus()) {
-    /* Get new sensor events with the readings */
-    sensors_event_t a, g, temp;
-    mpu.getEvent(&a, &g, &temp);
-
-    if(a.acceleration.z>5 and  a.acceleration.x >-4 or a.acceleration.x > 5 ){
-    mpu_Orinetation = false;
-    }
-    else
-    {
-        mpu_Orinetation = true;
-
-        if(a.acceleration.x <-5 &&  a.acceleration.z <-5){
-          mpu_Activity = "Grazing";
-        }
-        else if(a.acceleration.x <5 &&  a.acceleration.z >-5){
-          mpu_Activity = "Standing";
-        }
-        else if(a.acceleration.x >-5 &&  a.acceleration.y >5)
-        {
-          mpu_Activity = "Loose Ear";
-        }
-   }
    
-  }
+  //===================================================================
+   if (Firebase.RTDB.setBool(&fbdo, "Node1/Sensor Orientation",mpu_Orinetation)){
+     Serial.println("PASSED Sensor Orientation");
+    }
+    else {
+      Serial.println("FAILED Sensor Orientation");
+    }
+
+    if (Firebase.RTDB.setInt(&fbdo, "Node1/IMU Activity",mpu_Activity)){
+          Serial.println("PASSED IMU Activity");
+    }
+    else {
+      Serial.println("FAILED IMU Activity");
+    }
+
   
-}
-
-if (Firebase.RTDB.setBool(&fbdo, "Node1/Sensor Orientation",mpu_Orinetation)){
-  Serial.println("PASSED Sensor Orientation");
-}
-else {
-  Serial.println("FAILED Sensor Orientation");
-}
-
-if (Firebase.RTDB.setString(&fbdo, "Node1/IMU Activity",mpu_Activity)){
-      Serial.println("PASSED IMU Activity");
-}
-else {
-  Serial.println("FAILED IMU Activity");
-}
-
-/*================================================
-* Gas Detection
-*/
-
-//digitalWrite(gasS_trig,HIGH);
-  if(analogRead(gasSensor)>1550){
-    Serial.print("Dangerous Gas Detected");
-    dngGasDet = true;
-  }
-//digitalWrite(gasS_trig,LOW)
-if (Firebase.RTDB.setBool(&fbdo, "Node1/Dangerous Gas",dngGasDet)){
+  //===================================================================
+   
+   
+    if (Firebase.RTDB.setBool(&fbdo, "Node1/Dangerous Gas",dngGasDet)){
       Serial.println("PASSED Dangerous Gas");
-}
-else {
-  Serial.println("FAILED Dangerous Gas");
-}
-
-  /*
-   *  Heart Rate
-      SPO2-----
-      Body Temperature
-      Environment Temperature
-      Air Quality
-      Hazardous Gas
-      Motion Detected
-      Walk Detected
-      Overall Health Status
-   */
-
-
-  /*=============================================
-  * Health Status Calculation
-  *
-  */
+    }
+    else {
+      Serial.println("FAILED Dangerous Gas");
+    }
+    
+  }
 
   
- }
+}
