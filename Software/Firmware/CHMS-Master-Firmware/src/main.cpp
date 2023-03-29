@@ -5,7 +5,7 @@
  * Project: Cattle Health Monitoring System
  * Created by Muhammad Aitesam
  *
- * Master Fimrware File
+ * Master Firmware File
  *
  *
  */
