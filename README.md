@@ -29,6 +29,6 @@
     * [ ] Video: Deployment & Operation
     * [ ] Video: Promotional
     * [ ] Presentations
-    * [ ] Evaluation Docs
+    * [ ] Evaluation Documents
     * [ ] User Manual
   
