@@ -13,19 +13,19 @@
     * [x] Selection of Hardware Components
     * [x] Schematic Design
     * [x] Peripheral Testing
-    * [ ] Components Integration
-    * [ ] Hardware System Bring-up
+    * [x] Components Integration
+    * [x] Hardware System Bring-up
 * [ ] Fimrware & Software Development
     * [x] Firmware Development & Testing for Discrete Components
-    * [ ] Establish Reliable Communication w/ Cloud Database
-    * [ ] Master Firmware Development
-    * [ ] Algorithm Refinement
-    * [ ] Webapp UI & Dashboard Design
-    * [ ] Dashboard Integration w/ Database
+    * [x] Establish Reliable Communication w/ Cloud Database
+    * [x] Master Firmware Development
+    * [x] Algorithm Refinement
+    * [x] Mobile App UI & Dashboard Design
+    * [x] Dashboard Integration w/ Database
     * [ ] Hardware Deployment in Field Application
     * [ ] Final Testing & Errata 
 * [ ] Documentation
-    * [ ] Reports
+    * [x] Reports
     * [ ] Video: Deployment & Operation
     * [ ] Video: Promotional
     * [ ] Presentations
