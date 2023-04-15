@@ -86,7 +86,7 @@ int mpu_Orientation ;
 int mpu_Activity ;
 int Grazing;
 
-
+int h_status = 0;
 
 
 void setup()
@@ -185,6 +185,7 @@ void loop()
   uint8_t dht_humi = dht.readHumidity();
   uint8_t dht_temp = dht.readTemperature();
   
+
 
     /*=====================================================
     *
@@ -319,7 +320,12 @@ for( mpu_loop_control = 0; mpu_loop_control <= 20; mpu_loop_control++){
     else {
       Serial.println("FAILED Environment Temperature");
     }
-    
+    Serial.println(" ");
+    Serial.print("Temp = :");
+    Serial.println(dht_temp);
+    Serial.print("Humi = :");
+    Serial.println(dht_humi);
+
   //===================================================================
    
     if (Firebase.RTDB.setInt(&fbdo, "Node1/Heart Rate",beatAvg)){
@@ -342,6 +348,14 @@ for( mpu_loop_control = 0; mpu_loop_control <= 20; mpu_loop_control++){
     else {
       Serial.println("FAILED Body Temperature");
     }
+
+
+    Serial.print("HeartRate = :");
+    Serial.println(beatAvg);
+    Serial.print("Contact Status = :");
+    Serial.println(FingerON);
+    Serial.print("Body temp = :");
+    Serial.println(body_temperature);
    
   //===================================================================
    if (Firebase.RTDB.setInt(&fbdo, "Node1/Sensor Orientation",mpu_Orientation)){
@@ -364,7 +378,12 @@ for( mpu_loop_control = 0; mpu_loop_control <= 20; mpu_loop_control++){
     else {
       Serial.println("FAILED Grazing");
     }
-
+    Serial.print("Sensor Orientation = :");
+    Serial.println(mpu_Orientation);
+    Serial.print("IMU Activity = :");
+    Serial.println(mpu_Activity);
+    Serial.print("Grazing = :");
+    Serial.println(Grazing);
   
   //===================================================================
    
@@ -376,6 +395,16 @@ for( mpu_loop_control = 0; mpu_loop_control <= 20; mpu_loop_control++){
       Serial.println("FAILED Dangerous Gas");
     }
     
+  }
+    Serial.print("Dangerous Gas = :");
+    Serial.println(dngGasDet);
+
+  if (dngGasDet == 1 or mpu_Orientation == 0 or FingerON==0 or beatAvg <= 40)
+  {
+    h_status = 0;
+  }
+  else {
+    h_status = 1;
   }
 // sudo chmod a+rw /dev/ttyUSB0
   
