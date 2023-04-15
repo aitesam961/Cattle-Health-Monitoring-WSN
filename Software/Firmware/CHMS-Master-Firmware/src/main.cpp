@@ -56,7 +56,7 @@
 
 #define gasSensor 32
 //#define gasS_trig 33
-bool dngGasDet;
+int dngGasDet;
 
 
 FirebaseData fbdo;
@@ -77,14 +77,14 @@ byte rateSpot = 0;
 long lastBeat = 0; //Time at which the last beat occurred
 float beatsPerMinute;
 int beatAvg;
-bool FingerON = false;
+int FingerON = 0;
 uint8_t body_temperature;
 
 Adafruit_MPU6050 mpu;
 uint8_t mpu_loop_control = 0;
-bool mpu_Orinetation ;
+int mpu_Orientation ;
 int mpu_Activity ;
-
+int Grazing;
 
 
 
@@ -169,7 +169,7 @@ void setup()
   //pinMode(gasS_trig, OUTPUT);
   pinMode(gasSensor, INPUT);
   //digitalWrite(gasS_trig,LOW)
-  dngGasDet = false;
+  dngGasDet = 0;
   Serial.println("MQ135 Initialized");
   Serial.println("..........");
 }
@@ -239,7 +239,7 @@ void loop()
     }
     else
     {
-      FingerON = true;
+      FingerON = 1;
       
     }
   }
@@ -262,11 +262,11 @@ for( mpu_loop_control = 0; mpu_loop_control <= 20; mpu_loop_control++){
     mpu.getEvent(&a, &g, &mpu_temp);
 
     if(a.acceleration.z>5 and  a.acceleration.x >-4 or a.acceleration.x > 5 ){
-    mpu_Orinetation = false;
+    mpu_Orientation = 0;
     }
     else
     {
-        mpu_Orinetation = true;
+        mpu_Orientation = 1;
 
         if(a.acceleration.x <-5 &&  a.acceleration.z <-5){
           mpu_Activity = 1;
@@ -278,6 +278,7 @@ for( mpu_loop_control = 0; mpu_loop_control <= 20; mpu_loop_control++){
         {
           mpu_Activity = 3;
         }
+        // Implement algorithm for grazing, standing and Health Status
    }
    
   }
@@ -292,7 +293,7 @@ for( mpu_loop_control = 0; mpu_loop_control <= 20; mpu_loop_control++){
 //digitalWrite(gasS_trig,HIGH);
   if(analogRead(gasSensor)>1550){
     Serial.print("Dangerous Gas Detected");
-    dngGasDet = true;
+    dngGasDet = 1;
   }
 //digitalWrite(gasS_trig,LOW)
 
@@ -343,7 +344,7 @@ for( mpu_loop_control = 0; mpu_loop_control <= 20; mpu_loop_control++){
     }
    
   //===================================================================
-   if (Firebase.RTDB.setBool(&fbdo, "Node1/Sensor Orientation",mpu_Orinetation)){
+   if (Firebase.RTDB.setInt(&fbdo, "Node1/Sensor Orientation",mpu_Orientation)){
      Serial.println("PASSED Sensor Orientation");
     }
     else {
@@ -357,11 +358,18 @@ for( mpu_loop_control = 0; mpu_loop_control <= 20; mpu_loop_control++){
       Serial.println("FAILED IMU Activity");
     }
 
+    if (Firebase.RTDB.setInt(&fbdo, "Node1/Grazing",Grazing)){
+          Serial.println("PASSED Grazing");
+    }
+    else {
+      Serial.println("FAILED Grazing");
+    }
+
   
   //===================================================================
    
    
-    if (Firebase.RTDB.setBool(&fbdo, "Node1/Dangerous Gas",dngGasDet)){
+    if (Firebase.RTDB.setInt(&fbdo, "Node1/Dangerous Gas",dngGasDet)){
       Serial.println("PASSED Dangerous Gas");
     }
     else {
