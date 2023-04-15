@@ -41,11 +41,11 @@
 // For the following credentials, see examples/Authentications/SignInAsUser/EmailPassword/EmailPassword.ino
 
 // API Key for Firebase RTDB
-#define API_KEY "AIzaSyBbTQqkiBVveuM1Cf9JtTqSngrCHsi41z4"
-#define DATABASE_URL "cattle-health-monitoring-wsn-default-rtdb.asia-southeast1.firebasedatabase.app" 
+#define API_KEY "AIzaSyAyJaaQV_4GPN3dMBmuAPh9h9aLUVw9Hlk"
+#define DATABASE_URL "cattle-health-monitoring-chms-default-rtdb.firebaseio.com" 
 
 // Email and password for Each Cattle Node
-#define USER_EMAIL "esp32-node1@CHMS.com"
+#define USER_EMAIL "node1@CHMS.com"
 #define USER_PASSWORD "esp32-node1"
 
 
@@ -377,6 +377,6 @@ for( mpu_loop_control = 0; mpu_loop_control <= 20; mpu_loop_control++){
     }
     
   }
-
+// sudo chmod a+rw /dev/ttyUSB0
   
 }
