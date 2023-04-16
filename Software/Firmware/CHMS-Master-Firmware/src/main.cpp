@@ -84,16 +84,20 @@ Adafruit_MPU6050 mpu;
 uint8_t mpu_loop_control = 0;
 int mpu_Orientation ;
 int mpu_Activity ;
-int Grazing;
-
+int Grazing = 0;
+int standing = 0;
 int h_status = 0;
-
+int loose_ear = 0;
 
 void setup()
 {
 
+  pinMode(4, OUTPUT);   // Trigger Start for MQ13. Keeps MQ135 shut until rest of the system boots up.
+  digitalWrite(4, LOW);
+
   Serial.begin(115200);
-  
+  Serial.print("System Boot");
+  Serial.print("Serial OK");
   // Starting WiFi
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   Serial.print("Connecting to Wi-Fi");
@@ -168,8 +172,10 @@ void setup()
 
   //pinMode(gasS_trig, OUTPUT);
   pinMode(gasSensor, INPUT);
+  
   //digitalWrite(gasS_trig,LOW)
   dngGasDet = 0;
+  digitalWrite(4, HIGH);
   Serial.println("MQ135 Initialized");
   Serial.println("..........");
 }
@@ -233,7 +239,7 @@ void loop()
 
     if (irValue < 50000){
       Serial.print(" No finger?");
-      FingerON = false;
+      FingerON = 0;
       beatAvg = 0;
       body_temperature = 0;
 
@@ -262,24 +268,31 @@ for( mpu_loop_control = 0; mpu_loop_control <= 20; mpu_loop_control++){
     sensors_event_t a, g, mpu_temp;
     mpu.getEvent(&a, &g, &mpu_temp);
 
-    if(a.acceleration.z>5 and  a.acceleration.x >-4 or a.acceleration.x > 5 ){
+    if((a.acceleration.x > 2) or (a.acceleration.y <-4 ) or (a.acceleration.z > 7) ){
     mpu_Orientation = 0;
     }
     else
     {
         mpu_Orientation = 1;
 
-        if(a.acceleration.x <-5 &&  a.acceleration.z <-5){
+        if(( a.acceleration.x <-6 &&  a.acceleration.x >-10)&&(a.acceleration.z < 8 &&  a.acceleration.z >-2)){
           mpu_Activity = 1;
+          standing = 1;
+          Grazing  = 0;
         }
-        else if(a.acceleration.x <5 &&  a.acceleration.z >-5){
+        else if((a.acceleration.x <-9  &&  a.acceleration.x >-6)&&(a.acceleration.z <-2  &&  a.acceleration.z >-7)){
           mpu_Activity = 2;
+          standing = 1;
+          Grazing  = 1;
         }
-        else if(a.acceleration.x >-5 &&  a.acceleration.y >5)
-        {
-          mpu_Activity = 3;
-        }
-        // Implement algorithm for grazing, standing and Health Status
+        
+         
+        
+   }
+   if(a.acceleration.y >2 &&  a.acceleration.y <9)
+   {
+     mpu_Activity = 3;
+     loose_ear = 1;
    }
    
   }
@@ -384,6 +397,8 @@ for( mpu_loop_control = 0; mpu_loop_control <= 20; mpu_loop_control++){
     Serial.println(mpu_Activity);
     Serial.print("Grazing = :");
     Serial.println(Grazing);
+    Serial.print("Loose Ear = :");
+    Serial.println(loose_ear);
   
   //===================================================================
    
