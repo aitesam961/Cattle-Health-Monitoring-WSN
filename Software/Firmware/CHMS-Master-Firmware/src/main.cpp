@@ -55,7 +55,7 @@
 // Define Firebase Data object
 
 #define gasSensor 32
-//#define gasS_trig 33
+#define gasS_trig 33
 int dngGasDet;
 
 
@@ -170,10 +170,10 @@ void setup()
     mpu.setMotionInterrupt(true);
   }
 
-  //pinMode(gasS_trig, OUTPUT);
+  pinMode(gasS_trig, OUTPUT);
   pinMode(gasSensor, INPUT);
   
-  //digitalWrite(gasS_trig,LOW)
+  digitalWrite(gasS_trig,LOW);
   dngGasDet = 0;
   digitalWrite(4, HIGH);
   Serial.println("MQ135 Initialized");
@@ -199,9 +199,9 @@ void loop()
     * 200 Iters
     */
   
-   for(int hr_runtime = 0; hr_runtime <= 200;hr_runtime++){
+   for(int hr_runtime = 0; hr_runtime <= 100;hr_runtime++){
   // Heartrate Sensor Starts Working
-      Serial.println("Heart Rate Check Loop");
+      //Serial.println("Heart Rate Check Loop");
       long irValue = particleSensor.getIR();
   
     if (checkForBeat(irValue) == true)
@@ -232,7 +232,7 @@ void loop()
     Serial.println();
 
     //Get Body Temperature
-    body_temperature = (particleSensor.readTemperature()+5);
+    body_temperature = (particleSensor.readTemperature()+2);
     Serial.print("temperatureC=");
     Serial.print(body_temperature, 4);
     
@@ -250,8 +250,23 @@ void loop()
       
     }
   }
-  Serial.println();
-
+  Serial.print("Heart Rate Obtained");
+  Serial.println(beatAvg);
+  if(beatAvg > 30 && beatAvg < 40){
+    beatAvg = beatAvg+36;
+  }
+  else if (beatAvg > 31 && beatAvg < 40){
+    beatAvg = beatAvg+28;
+  }
+  else if (beatAvg > 50 && beatAvg < 60){
+    beatAvg = beatAvg+19;
+  }
+  else if(beatAvg > 62){
+    beatAvg = beatAvg + 2;
+  }
+  else{
+    beatAvg = beatAvg;
+  }
 
     
 
@@ -262,58 +277,110 @@ void loop()
 
     * 20 Iters
 */
-for( mpu_loop_control = 0; mpu_loop_control <= 20; mpu_loop_control++){
+
   if(mpu.getMotionInterruptStatus()) {
     /* Get new sensor events with the readings */
     sensors_event_t a, g, mpu_temp;
     mpu.getEvent(&a, &g, &mpu_temp);
 
-    if((a.acceleration.x > 2) or (a.acceleration.y <-4 ) or (a.acceleration.z > 7) ){
+    Serial.println("\n===========IMU=============\n");
+    if((a.acceleration.x < 0) or (a.acceleration.y >5 ) or (a.acceleration.z > 8) ){
     mpu_Orientation = 0;
+    standing = 0;
+    Grazing  = 0;
+    mpu_Activity = 0;
+    Serial.println("Orientation False");
+    Serial.print ("X_AXIS");Serial.print ("a.acceleration.x");
+    Serial.print ("Y_AXIS");Serial.print ("a.acceleration.y");
+    Serial.print ("Z_AXIS");Serial.print ("a.acceleration.z");
+
+
     }
     else
     {
+        
         mpu_Orientation = 1;
-
-        if(( a.acceleration.x <-6 &&  a.acceleration.x >-10)&&(a.acceleration.z < 8 &&  a.acceleration.z >-2)){
+        
+        if(( a.acceleration.x <11 &&  a.acceleration.x >7)&&(a.acceleration.z < 6 &&  a.acceleration.z >-2)){
           mpu_Activity = 1;
           standing = 1;
           Grazing  = 0;
         }
-        else if((a.acceleration.x <-9  &&  a.acceleration.x >-6)&&(a.acceleration.z <-2  &&  a.acceleration.z >-7)){
+        else if((a.acceleration.x <8  &&  a.acceleration.x >4)&&(a.acceleration.z <0  &&  a.acceleration.z >-8)){
           mpu_Activity = 2;
-          standing = 1;
+          standing = 0;
           Grazing  = 1;
         }
+        if((a.acceleration.y >9 &&  a.acceleration.y <-4)&&(a.acceleration.z >-5 &&  a.acceleration.z <-3))
+        {
+          mpu_Activity = 3;
+          loose_ear = 1;
+        }
         
-         
         
-   }
-   if(a.acceleration.y >2 &&  a.acceleration.y <9)
-   {
-     mpu_Activity = 3;
-     loose_ear = 1;
-   }
-   
   }
+   if (Firebase.RTDB.setInt(&fbdo, "Node1/Sensor Orientation",mpu_Orientation)){
+     Serial.println("PASSED Sensor Orientation");
+    }
+    else {
+      Serial.println("FAILED Sensor Orientation");
+    }
+
+    if (Firebase.RTDB.setInt(&fbdo, "Node1/IMU Activity",mpu_Activity)){
+          Serial.println("PASSED IMU Activity");
+    }
+    else {
+      Serial.println("FAILED IMU Activity");
+    }
+
+    if (Firebase.RTDB.setInt(&fbdo, "Node1/Grazing",Grazing)){
+          Serial.println("PASSED Grazing");
+    }
+    else {
+      Serial.println("FAILED Grazing");
+    }
+    if (Firebase.RTDB.setInt(&fbdo, "Node1/Standing",standing)){
+          Serial.println("PASSED Standing");
+    }
+    else {
+      Serial.println("FAILED Standing");
+    }
+    if (Firebase.RTDB.setInt(&fbdo, "Node1/Loose Ear",loose_ear)){
+          Serial.println("PASSED Loose Ear");
+    }
+    else {
+      Serial.println("FAILED Loose Ear");
+    }
+    Serial.print("Sensor Orientation = :");
+    Serial.println(mpu_Orientation);
+    Serial.print("IMU Activity = :");
+    Serial.println(mpu_Activity);
+    Serial.print("Grazing = :");
+    Serial.println(Grazing);
+    Serial.print("Loose Ear = :");
+    Serial.println(loose_ear);
+  
+  //===================================================================
   
 }
+
 
 
 /*================================================
 * Gas Detection
 */
 
-//digitalWrite(gasS_trig,HIGH);
+digitalWrite(gasS_trig,HIGH);
   if(analogRead(gasSensor)>1550){
     Serial.print("Dangerous Gas Detected");
     dngGasDet = 1;
   }
-//digitalWrite(gasS_trig,LOW)
+digitalWrite(gasS_trig,LOW);
 
 
   if (Firebase.ready() && (millis() - sendDataPrevMillis > 15000 || sendDataPrevMillis == 0))
   {
+    Serial.println("Firebase Ready");
     sendDataPrevMillis = millis();
     // Write an Int number on the database path test/int
 
@@ -371,36 +438,7 @@ for( mpu_loop_control = 0; mpu_loop_control <= 20; mpu_loop_control++){
     Serial.println(body_temperature);
    
   //===================================================================
-   if (Firebase.RTDB.setInt(&fbdo, "Node1/Sensor Orientation",mpu_Orientation)){
-     Serial.println("PASSED Sensor Orientation");
-    }
-    else {
-      Serial.println("FAILED Sensor Orientation");
-    }
-
-    if (Firebase.RTDB.setInt(&fbdo, "Node1/IMU Activity",mpu_Activity)){
-          Serial.println("PASSED IMU Activity");
-    }
-    else {
-      Serial.println("FAILED IMU Activity");
-    }
-
-    if (Firebase.RTDB.setInt(&fbdo, "Node1/Grazing",Grazing)){
-          Serial.println("PASSED Grazing");
-    }
-    else {
-      Serial.println("FAILED Grazing");
-    }
-    Serial.print("Sensor Orientation = :");
-    Serial.println(mpu_Orientation);
-    Serial.print("IMU Activity = :");
-    Serial.println(mpu_Activity);
-    Serial.print("Grazing = :");
-    Serial.println(Grazing);
-    Serial.print("Loose Ear = :");
-    Serial.println(loose_ear);
   
-  //===================================================================
    
    
     if (Firebase.RTDB.setInt(&fbdo, "Node1/Dangerous Gas",dngGasDet)){
