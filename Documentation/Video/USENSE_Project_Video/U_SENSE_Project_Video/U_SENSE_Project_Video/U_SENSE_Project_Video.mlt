@@ -6,8 +6,8 @@
     <property name="shotcut:projectFolder">1</property>
     <property name="xml_retain">1</property>
   </playlist>
-  <producer id="black" in="00:00:00.000" out="00:01:27.833">
-    <property name="length">00:01:27.867</property>
+  <producer id="black" in="00:00:00.000" out="00:01:16.367">
+    <property name="length">00:01:16.400</property>
     <property name="eof">pause</property>
     <property name="resource">0</property>
     <property name="aspect_ratio">1</property>
@@ -16,7 +16,7 @@
     <property name="set.test_audio">0</property>
   </producer>
   <playlist id="background">
-    <entry producer="black" in="00:00:00.000" out="00:01:27.833"/>
+    <entry producer="black" in="00:00:00.000" out="00:01:16.367"/>
   </playlist>
   <producer id="producer0" in="00:00:00.000" out="03:59:59.967">
     <property name="length">04:00:00.000</property>
@@ -148,19 +148,56 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <property name="creation_time">2023-05-12T07:12:52</property>
     <property name="shotcut:hash">54cd9f4fa5b61db059768b34d67e9e0a</property>
     <property name="shotcut:caption">livestock-601277_1920.jpg</property>
-    <filter id="filter2" out="00:00:17.400">
+    <filter id="filter2" out="00:00:12.033">
       <property name="background">color:#00000000</property>
       <property name="mlt_service">affine</property>
       <property name="shotcut:filter">affineSizePosition</property>
       <property name="transition.fill">1</property>
       <property name="transition.distort">0</property>
-      <property name="transition.rect">00:00:00.000=0 0 1920 1080 1;00:00:07.867=92.339 51.9407 1735.32 1108.98 1;00:00:09.200=92.339 51.9407 1735.32 1108.98 1;00:00:17.400=0 0 1920 1080 1</property>
+      <property name="transition.rect">00:00:00.000=0 0 1920 1080 1;00:00:07.867=92.339 51.9407 1735.32 1108.98 1;00:00:12.033=0 0 1920 1080 1</property>
       <property name="transition.valign">middle</property>
       <property name="transition.halign">center</property>
       <property name="shotcut:animIn">00:00:07.900</property>
       <property name="shotcut:animOut">00:00:08.233</property>
       <property name="transition.threads">0</property>
-      <property name="transition.fix_rotate_x">00:00:00.000=0;00:00:07.867=0;00:00:09.200=0;00:00:17.400=0</property>
+      <property name="transition.fix_rotate_x">00:00:00.000=0;00:00:07.867=0;00:00:12.033=0</property>
+    </filter>
+    <filter id="filter3" out="00:00:12.033">
+      <property name="argument"></property>
+      <property name="geometry">203 148 1579 838 1</property>
+      <property name="family">Sans</property>
+      <property name="size">48</property>
+      <property name="weight">400</property>
+      <property name="style">normal</property>
+      <property name="fgcolour">0x000000ff</property>
+      <property name="bgcolour">#00000000</property>
+      <property name="olcolour">0x00000000</property>
+      <property name="pad">0</property>
+      <property name="halign">left</property>
+      <property name="valign">top</property>
+      <property name="outline">0</property>
+      <property name="pixel_ratio">1</property>
+      <property name="mlt_service">qtext</property>
+      <property name="shotcut:filter">richText</property>
+      <property name="html">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; font-size:72pt; font-weight:600; color:#ffffff;&quot;&gt;            		&lt;/span&gt;&lt;span style=&quot; font-family:'sans-serif'; font-size:40pt; font-weight:600; color:#ffffff;&quot;&gt;- Bio-Sensing&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; font-size:40pt; font-weight:600; color:#ffffff;&quot;&gt;							- Enviornment Monitoring&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; font-size:40pt; font-weight:600; color:#ffffff;&quot;&gt;							- Motion Tracking&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; font-size:40pt; font-weight:600; color:#ffffff;&quot;&gt;				&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'sans-serif'; font-size:40pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'sans-serif'; font-size:40pt; font-weight:600; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; font-size:40pt; font-weight:600; color:#ffffff;&quot;&gt;	&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; font-size:40pt; font-weight:600; color:#ffffff;&quot;&gt;	- Emergency Notifications&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; font-size:40pt; font-weight:600; color:#ffffff;&quot;&gt;	- Data Logging&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; font-size:40pt; font-weight:600; color:#ffffff;&quot;&gt;	- Motion Tracking&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</property>
+      <property name="shotcut:animIn">00:00:00.000</property>
+      <property name="shotcut:animOut">00:00:00.000</property>
     </filter>
   </producer>
   <tractor id="tractor2" in="00:00:00.000" out="00:00:00.600">
@@ -178,9 +215,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <transition id="transition5" out="00:00:00.600">
       <property name="a_track">0</property>
       <property name="b_track">1</property>
+      <property name="mlt_service">mix</property>
       <property name="start">-1</property>
       <property name="accepts_blanks">1</property>
-      <property name="mlt_service">mix</property>
     </transition>
   </tractor>
   <producer id="producer2" in="00:00:00.000" out="03:59:59.967">
@@ -198,6 +235,26 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <property name="shotcut:caption">20230429_175326.jpg</property>
     <property name="xml">was here</property>
   </producer>
+  <tractor id="tractor3" in="00:00:00.000" out="00:00:00.567">
+    <property name="shotcut:transition">lumaMix</property>
+    <track producer="producer1" in="00:00:11.467" out="00:00:12.033"/>
+    <track producer="producer2" in="00:00:01.367" out="00:00:01.933"/>
+    <transition id="transition6" out="00:00:00.567">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="factory">loader</property>
+      <property name="mlt_service">luma</property>
+      <property name="alpha_over">1</property>
+      <property name="fix_background_alpha">1</property>
+    </transition>
+    <transition id="transition7" out="00:00:00.567">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="mlt_service">mix</property>
+      <property name="start">-1</property>
+      <property name="accepts_blanks">1</property>
+    </transition>
+  </tractor>
   <producer id="producer3" in="00:00:00.000" out="03:59:59.967">
     <property name="length">04:00:00.000</property>
     <property name="eof">pause</property>
@@ -212,7 +269,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <property name="shotcut:hash">0754625cd5c17e7f507fe50d43c2ea4f</property>
     <property name="shotcut:caption">agriculture-7177221_1920.png</property>
     <property name="xml">was here</property>
-    <filter id="filter3" in="00:00:00.967" out="00:00:08.533">
+    <filter id="filter4" in="00:00:00.967" out="00:00:08.533">
       <property name="argument"></property>
       <property name="geometry">00:00:00.000=1920 0 1920 1080 1;00:00:03.000=968 181 952 899 1</property>
       <property name="family">Sans</property>
@@ -240,7 +297,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="shotcut:animIn">00:00:03.033</property>
       <property name="shotcut:animOut">00:00:00.000</property>
     </filter>
-    <filter id="filter4" in="00:00:00.967" out="00:00:08.533">
+    <filter id="filter5" in="00:00:00.967" out="00:00:08.533">
       <property name="argument"></property>
       <property name="geometry">00:00:00.000=1920 0 1920 1080 1;00:00:03.000=968 342 952 738 1</property>
       <property name="family">Sans</property>
@@ -268,7 +325,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="shotcut:animIn">00:00:03.033</property>
       <property name="shotcut:animOut">00:00:00.000</property>
     </filter>
-    <filter id="filter5" in="00:00:00.967" out="00:00:08.533">
+    <filter id="filter6" in="00:00:00.967" out="00:00:08.533">
       <property name="argument"></property>
       <property name="geometry">00:00:00.000=1920 0 1920 1080 1;00:00:03.000=974 494 912 195 1</property>
       <property name="family">Sans</property>
@@ -296,13 +353,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="shotcut:animIn">00:00:03.033</property>
       <property name="shotcut:animOut">00:00:00.000</property>
     </filter>
-    <filter id="filter6" in="00:00:00.967" out="00:00:08.533">
+    <filter id="filter7" in="00:00:00.967" out="00:00:08.533">
       <property name="transition">frei0r.composition</property>
       <property name="mlt_image_format">rgba</property>
       <property name="mlt_service">mask_apply</property>
       <property name="transition.threads">0</property>
     </filter>
-    <filter id="filter7" in="00:00:01.567" out="00:00:07.800">
+    <filter id="filter8" in="00:00:01.567" out="00:00:07.800">
       <property name="background">color:#00000000</property>
       <property name="mlt_service">affine</property>
       <property name="shotcut:filter">affineSizePosition</property>
@@ -326,27 +383,27 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <entry producer="tractor1" in="00:00:00.000" out="00:00:00.800"/>
     <entry producer="chain1" in="00:02:11.400" out="00:02:18.867"/>
     <entry producer="tractor2" in="00:00:00.000" out="00:00:00.600"/>
-    <entry producer="producer1" in="00:00:00.633" out="00:00:17.400"/>
-    <blank length="00:00:08.967"/>
-    <entry producer="producer2" in="00:00:00.700" out="00:00:11.500"/>
+    <entry producer="producer1" in="00:00:00.633" out="00:00:11.433"/>
+    <entry producer="tractor3" in="00:00:00.000" out="00:00:00.567"/>
+    <entry producer="producer2" in="00:00:01.967" out="00:00:15.633"/>
     <blank length="00:00:17.067"/>
     <entry producer="producer3" in="00:00:02.200" out="00:00:07.800"/>
   </playlist>
-  <tractor id="tractor3" title="Shotcut version 23.05.07" in="00:00:00.000" out="00:01:27.833">
+  <tractor id="tractor4" title="Shotcut version 23.05.07" in="00:00:00.000" out="00:01:16.367">
     <property name="shotcut">1</property>
     <property name="shotcut:projectAudioChannels">2</property>
     <property name="shotcut:projectFolder">1</property>
     <property name="shotcut:scaleFactor">0.561368</property>
     <track producer="background"/>
     <track producer="playlist0" hide="audio"/>
-    <transition id="transition6">
+    <transition id="transition8">
       <property name="a_track">0</property>
       <property name="b_track">1</property>
       <property name="mlt_service">mix</property>
       <property name="always_active">1</property>
       <property name="sum">1</property>
     </transition>
-    <transition id="transition7">
+    <transition id="transition9">
       <property name="a_track">0</property>
       <property name="b_track">1</property>
       <property name="version">0.1</property>
