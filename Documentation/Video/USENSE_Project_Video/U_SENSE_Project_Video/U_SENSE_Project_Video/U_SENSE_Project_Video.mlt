@@ -1239,9 +1239,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <transition id="transition15" out="00:00:00.300">
       <property name="a_track">0</property>
       <property name="b_track">1</property>
+      <property name="mlt_service">mix</property>
       <property name="start">-1</property>
       <property name="accepts_blanks">1</property>
-      <property name="mlt_service">mix</property>
     </transition>
   </tractor>
   <playlist id="playlist0">
@@ -1523,17 +1523,59 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <property name="creation_time">2023-05-13T15:24:00</property>
     <property name="shotcut:hash">b68d6c80eea53859ab8675cd1912b86a</property>
     <property name="shotcut:caption">y2mate.com - ROYALTY FREE Business Technology Music Presentation Background Music Royalty Free by MUSIC4VIDEO.mp3</property>
-    <filter id="filter43" out="00:02:41.233">
+    <property name="xml">was here</property>
+    <filter id="filter43" out="00:02:40.433">
       <property name="window">75</property>
       <property name="max_gain">20dB</property>
       <property name="level">-19.4</property>
       <property name="mlt_service">volume</property>
     </filter>
   </chain>
+  <chain id="chain19" out="00:02:41.233">
+    <property name="length">00:02:41.267</property>
+    <property name="eof">pause</property>
+    <property name="resource">/home/aitesam961/Downloads/y2mate.com - ROYALTY FREE Business Technology Music Presentation Background Music Royalty Free by MUSIC4VIDEO.mp3</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">0</property>
+    <property name="video_index">-1</property>
+    <property name="creation_time">2023-05-13T15:24:00</property>
+    <property name="shotcut:hash">b68d6c80eea53859ab8675cd1912b86a</property>
+    <property name="shotcut:caption">y2mate.com - ROYALTY FREE Business Technology Music Presentation Background Music Royalty Free by MUSIC4VIDEO.mp3</property>
+    <property name="xml">was here</property>
+    <filter id="filter44" in="00:02:26.733" out="00:02:41.233">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">-16</property>
+      <property name="mlt_service">volume</property>
+    </filter>
+  </chain>
+  <tractor id="tractor8" in="00:00:00.000" out="00:00:00.933">
+    <property name="shotcut:transition">lumaMix</property>
+    <track producer="chain18" in="00:02:39.500" out="00:02:40.433"/>
+    <track producer="chain19" in="00:02:26.733" out="00:02:27.667"/>
+    <transition id="transition16" out="00:00:00.933">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="factory">loader</property>
+      <property name="mlt_service">luma</property>
+      <property name="alpha_over">1</property>
+      <property name="fix_background_alpha">1</property>
+    </transition>
+    <transition id="transition17" out="00:00:00.933">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="start">-1</property>
+      <property name="accepts_blanks">1</property>
+      <property name="mlt_service">mix</property>
+    </transition>
+  </tractor>
   <playlist id="playlist2">
     <property name="shotcut:audio">1</property>
     <property name="shotcut:name">A2</property>
-    <entry producer="chain18" in="00:00:00.000" out="00:02:41.233"/>
+    <entry producer="chain18" in="00:00:00.000" out="00:02:39.467"/>
+    <entry producer="tractor8" in="00:00:00.000" out="00:00:00.933"/>
+    <entry producer="chain19" in="00:02:27.700" out="00:02:41.233"/>
   </playlist>
   <tractor id="tractor21" title="Shotcut version 23.05.14" in="00:00:00.000" out="00:02:54.367">
     <property name="shotcut">1</property>
