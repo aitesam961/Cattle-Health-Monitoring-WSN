@@ -19,8 +19,8 @@
     <property name="xml_retain">1</property>
     <entry producer="chain0" in="00:00:00.000" out="00:00:03.667"/>
   </playlist>
-  <producer id="black" in="00:00:00.000" out="00:01:53.133">
-    <property name="length">00:01:53.167</property>
+  <producer id="black" in="00:00:00.000" out="00:02:41.333">
+    <property name="length">00:02:41.367</property>
     <property name="eof">pause</property>
     <property name="resource">0</property>
     <property name="aspect_ratio">1</property>
@@ -29,7 +29,7 @@
     <property name="set.test_audio">0</property>
   </producer>
   <playlist id="background">
-    <entry producer="black" in="00:00:00.000" out="00:01:53.133"/>
+    <entry producer="black" in="00:00:00.000" out="00:02:41.333"/>
   </playlist>
   <producer id="producer0" in="00:00:00.000" out="03:59:59.967">
     <property name="length">04:00:00.000</property>
@@ -1447,14 +1447,39 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <blank length="00:00:00.133"/>
     <entry producer="chain6" in="00:00:00.000" out="00:00:08.800"/>
   </playlist>
-  <tractor id="tractor21" title="Shotcut version 23.05.07" in="00:00:00.000" out="00:01:53.133">
+  <chain id="chain7" out="00:02:41.233">
+    <property name="length">00:02:41.267</property>
+    <property name="eof">pause</property>
+    <property name="resource">/home/aitesam961/Downloads/y2mate.com - ROYALTY FREE Business Technology Music Presentation Background Music Royalty Free by MUSIC4VIDEO.mp3</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">0</property>
+    <property name="video_index">-1</property>
+    <property name="creation_time">2023-05-13T15:24:00</property>
+    <property name="shotcut:hash">b68d6c80eea53859ab8675cd1912b86a</property>
+    <property name="shotcut:caption">y2mate.com - ROYALTY FREE Business Technology Music Presentation Background Music Royalty Free by MUSIC4VIDEO.mp3</property>
+    <filter id="filter40" out="00:02:41.233">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">-17.5</property>
+      <property name="mlt_service">volume</property>
+    </filter>
+  </chain>
+  <playlist id="playlist2">
+    <property name="shotcut:audio">1</property>
+    <property name="shotcut:name">A2</property>
+    <blank length="00:00:00.100"/>
+    <entry producer="chain7" in="00:00:00.000" out="00:02:41.233"/>
+  </playlist>
+  <tractor id="tractor21" title="Shotcut version 23.05.07" in="00:00:00.000" out="00:02:41.333">
     <property name="shotcut">1</property>
     <property name="shotcut:projectAudioChannels">2</property>
     <property name="shotcut:projectFolder">1</property>
-    <property name="shotcut:scaleFactor">2.207</property>
+    <property name="shotcut:scaleFactor">0.840584</property>
     <track producer="background"/>
     <track producer="playlist0" hide="audio"/>
     <track producer="playlist1" hide="video"/>
+    <track producer="playlist2" hide="video"/>
     <transition id="transition42">
       <property name="a_track">0</property>
       <property name="b_track">1</property>
@@ -1473,6 +1498,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <transition id="transition44">
       <property name="a_track">0</property>
       <property name="b_track">2</property>
+      <property name="mlt_service">mix</property>
+      <property name="always_active">1</property>
+      <property name="sum">1</property>
+    </transition>
+    <transition id="transition45">
+      <property name="a_track">0</property>
+      <property name="b_track">3</property>
       <property name="mlt_service">mix</property>
       <property name="always_active">1</property>
       <property name="sum">1</property>
