@@ -15,27 +15,27 @@
     * [x] Peripheral Testing
     * [x] Components Integration
     * [x] Hardware System Bring-up
-* [ ] Fimrware & Software Development
+* [x] Fimrware & Software Development
     * [x] Firmware Development & Testing for Discrete Components
     * [x] Establish Reliable Communication w/ Cloud Database
     * [x] Master Firmware Development
     * [x] Algorithm Refinement
     * [x] Mobile App UI & Dashboard Design
     * [x] Dashboard Integration w/ Database
-    * [ ] Hardware Deployment in Field Application
-    * [ ] Final Testing & Errata 
-* [ ] 3D Design
+    * [x] Hardware Deployment in Field Application
+    * [x] Final Testing & Errata 
+* [x] 3D Design
     * [x] Enclosure Design Sutie
     * [x] Modeling and Design
     * [x] DFM Check
     * [x] Manufacturer Quotes 
     * [x] 3D Printing Order
-    * [ ] Hardware Assembly
+    * [x] Hardware Assembly
 * [ ] Documentation
     * [x] Reports
-    * [ ] Video: Deployment & Operation
-    * [ ] Video: Promotional
-    * [ ] Presentations
-    * [ ] Evaluation Documents
+    * [x] Video: Deployment & Operation
+    * [x] Video: Promotional
+    * [x] Presentations
+    * [x] Evaluation Documents
     * [ ] User Manual
   
