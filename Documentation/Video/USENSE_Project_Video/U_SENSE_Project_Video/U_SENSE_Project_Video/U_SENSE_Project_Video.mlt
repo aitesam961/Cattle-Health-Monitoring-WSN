@@ -19,8 +19,8 @@
     <property name="xml_retain">1</property>
     <entry producer="chain0" in="00:00:00.000" out="00:00:03.667"/>
   </playlist>
-  <producer id="black" in="00:00:00.000" out="00:02:25.300">
-    <property name="length">00:02:25.333</property>
+  <producer id="black" in="00:00:00.000" out="00:02:54.367">
+    <property name="length">00:02:54.400</property>
     <property name="eof">pause</property>
     <property name="resource">0</property>
     <property name="aspect_ratio">1</property>
@@ -29,7 +29,7 @@
     <property name="set.test_audio">0</property>
   </producer>
   <playlist id="background">
-    <entry producer="black" in="00:00:00.000" out="00:02:25.300"/>
+    <entry producer="black" in="00:00:00.000" out="00:02:54.367"/>
   </playlist>
   <producer id="producer0" in="00:00:00.000" out="03:59:59.967">
     <property name="length">04:00:00.000</property>
@@ -644,7 +644,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <property name="shotcut:hash">e5e97e99ad95d46571c80006696de2ea</property>
     <property name="shotcut:caption">cows-7880154_1920_1_5.png</property>
     <property name="xml">was here</property>
-    <filter id="filter18" in="00:00:00.033" out="00:00:11.433">
+    <filter id="filter18" in="00:00:00.033" out="00:00:17.800">
       <property name="mlt_service">crop</property>
       <property name="use_profile">1</property>
       <property name="center">0</property>
@@ -669,7 +669,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <property name="shotcut:hash">96fce5da16d036185c19b1c54c8298f0</property>
     <property name="shotcut:caption">Screenshot from 2023-05-13 19-14-49.png</property>
     <property name="xml">was here</property>
-    <filter id="filter19" in="00:00:00.433" out="00:00:03.967">
+    <filter id="filter19" in="00:00:00.433" out="00:00:08.833">
       <property name="mlt_service">crop</property>
       <property name="use_profile">1</property>
       <property name="center">0</property>
@@ -679,7 +679,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="left">0</property>
       <property name="right">0</property>
     </filter>
-    <filter id="filter20" in="00:00:00.433" out="00:00:03.967">
+    <filter id="filter20" in="00:00:00.433" out="00:00:08.833">
       <property name="background">color:#00000000</property>
       <property name="mlt_service">affine</property>
       <property name="shotcut:filter">affineSizePosition</property>
@@ -708,7 +708,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <property name="shotcut:hash">5da1aaee8f1998b74bd0ca45ff00555c</property>
     <property name="shotcut:caption">Screenshot from 2023-05-13 19-18-11.png</property>
     <property name="xml">was here</property>
-    <filter id="filter21" out="00:00:03.967">
+    <filter id="filter21" out="00:00:08.933">
       <property name="mlt_service">crop</property>
       <property name="use_profile">1</property>
       <property name="center">0</property>
@@ -718,7 +718,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="left">30</property>
       <property name="right">113</property>
     </filter>
-    <filter id="filter22" out="00:00:03.967">
+    <filter id="filter22" out="00:00:08.933">
       <property name="background">color:#00000000</property>
       <property name="mlt_service">affine</property>
       <property name="shotcut:filter">affineSizePosition</property>
@@ -767,7 +767,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <property name="shotcut:hash">0754625cd5c17e7f507fe50d43c2ea4f</property>
     <property name="shotcut:caption">agriculture-7177221_1920.png</property>
     <property name="xml">was here</property>
-    <filter id="filter23" in="00:00:02.200" out="00:00:07.867">
+    <filter id="filter23" in="00:00:02.200" out="00:00:20.500">
       <property name="argument"></property>
       <property name="geometry">00:00:00.000=1920 0 1920 1080 1;00:00:03.000=968 181 952 899 1</property>
       <property name="family">Sans</property>
@@ -795,7 +795,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="shotcut:animIn">00:00:03.033</property>
       <property name="shotcut:animOut">00:00:00.000</property>
     </filter>
-    <filter id="filter24" in="00:00:02.200" out="00:00:07.867">
+    <filter id="filter24" in="00:00:02.200" out="00:00:20.500">
       <property name="argument"></property>
       <property name="geometry">00:00:00.000=1920 0 1920 1080 1;00:00:03.000=968 342 952 738 1</property>
       <property name="family">Sans</property>
@@ -823,7 +823,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="shotcut:animIn">00:00:03.033</property>
       <property name="shotcut:animOut">00:00:00.000</property>
     </filter>
-    <filter id="filter25" in="00:00:02.200" out="00:00:07.867">
+    <filter id="filter25" in="00:00:02.200" out="00:00:20.500">
       <property name="argument"></property>
       <property name="geometry">00:00:00.000=1920 0 1920 1080 1;00:00:03.000=974 494 912 195 1</property>
       <property name="family">Sans</property>
@@ -851,13 +851,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="shotcut:animIn">00:00:03.033</property>
       <property name="shotcut:animOut">00:00:00.000</property>
     </filter>
-    <filter id="filter26" in="00:00:02.200" out="00:00:07.867">
+    <filter id="filter26" in="00:00:02.200" out="00:00:20.500">
       <property name="transition">frei0r.composition</property>
       <property name="mlt_image_format">rgba</property>
       <property name="mlt_service">mask_apply</property>
       <property name="transition.threads">0</property>
     </filter>
-    <filter id="filter27" in="00:00:02.200" out="00:00:07.867">
+    <filter id="filter27" in="00:00:02.200" out="00:00:20.500">
       <property name="mlt_service">crop</property>
       <property name="use_profile">1</property>
       <property name="center">0</property>
@@ -902,7 +902,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <property name="shotcut:hash">bc1d1e59e85de42a9ba8f44abc119e7f</property>
     <property name="shotcut:caption">20230429_175332.jpg</property>
     <property name="xml">was here</property>
-    <filter id="filter28" out="00:00:05.033">
+    <filter id="filter28" out="00:00:06.200">
       <property name="mlt_service">crop</property>
       <property name="use_profile">1</property>
       <property name="center">0</property>
@@ -912,7 +912,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="left">0</property>
       <property name="right">0</property>
     </filter>
-    <filter id="filter29" out="00:00:05.033">
+    <filter id="filter29" out="00:00:06.200">
       <property name="argument"></property>
       <property name="geometry">261 217 1467 755 1</property>
       <property name="family">Sans</property>
@@ -943,13 +943,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="shotcut:animIn">00:00:00.000</property>
       <property name="shotcut:animOut">00:00:00.000</property>
     </filter>
-    <filter id="filter30" out="00:00:05.033">
+    <filter id="filter30" out="00:00:06.200">
       <property name="transition">frei0r.composition</property>
       <property name="mlt_image_format">rgba</property>
       <property name="mlt_service">mask_apply</property>
       <property name="transition.threads">0</property>
     </filter>
-    <filter id="filter31" out="00:00:05.033">
+    <filter id="filter31" out="00:00:06.200">
       <property name="background">color:#00000000</property>
       <property name="mlt_service">affine</property>
       <property name="shotcut:filter">affineSizePosition</property>
@@ -996,7 +996,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <property name="shotcut:hash">2bb0fc3946c4d4cd41143a349753e709</property>
     <property name="shotcut:caption">20230429_175552.mp4</property>
     <property name="xml">was here</property>
-    <filter id="filter32" in="00:00:00.500" out="00:00:07.567">
+    <filter id="filter32" in="00:00:00.500" out="00:00:06.233">
       <property name="mlt_service">crop</property>
       <property name="use_profile">1</property>
       <property name="center">0</property>
@@ -1006,7 +1006,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="left">0</property>
       <property name="right">0</property>
     </filter>
-    <filter id="filter33" in="00:00:00.500" out="00:00:07.567">
+    <filter id="filter33" in="00:00:00.500" out="00:00:06.233">
       <property name="argument"></property>
       <property name="geometry">942 875 947 157 1</property>
       <property name="family">Sans</property>
@@ -1034,7 +1034,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="shotcut:animIn">00:00:00.000</property>
       <property name="shotcut:animOut">00:00:00.000</property>
     </filter>
-    <filter id="filter34" in="00:00:00.500" out="00:00:07.567">
+    <filter id="filter34" in="00:00:00.500" out="00:00:06.233">
       <property name="transition">frei0r.composition</property>
       <property name="mlt_image_format">rgba</property>
       <property name="mlt_service">mask_apply</property>
@@ -1078,7 +1078,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <property name="shotcut:caption">20230429_175656.mp4 (0.5x)</property>
     <property name="xml">was here</property>
     <property name="warp_pitch">1</property>
-    <filter id="filter35" in="00:00:00.400" out="00:00:11.267">
+    <filter id="filter35" in="00:00:00.400" out="00:00:08.500">
       <property name="mlt_service">crop</property>
       <property name="use_profile">1</property>
       <property name="center">0</property>
@@ -1092,7 +1092,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <tractor id="tractor18" in="00:00:00.000" out="00:00:00.367">
     <property name="shotcut:transition">lumaMix</property>
     <track producer="chain4" in="00:00:07.200" out="00:00:07.567"/>
-    <track producer="producer17" in="00:00:00.000" out="00:00:00.367"/>
+    <track producer="producer17" in="00:00:00.367" out="00:00:00.400"/>
     <transition id="transition36" out="00:00:00.367">
       <property name="a_track">0</property>
       <property name="b_track">1</property>
@@ -1109,7 +1109,35 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="accepts_blanks">1</property>
     </transition>
   </tractor>
-  <producer id="producer18" in="00:00:00.000" out="03:59:59.967">
+  <producer id="producer18" in="00:00:00.000" out="00:00:14.133">
+    <property name="length">00:00:14.167</property>
+    <property name="eof">pause</property>
+    <property name="resource">0.4:/home/aitesam961/Downloads/Temp-20230509T132613Z-001/Temp/Shortlisted/20230429_175656.mp4</property>
+    <property name="aspect_ratio">1</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="warp_speed">0.4</property>
+    <property name="warp_resource">/home/aitesam961/Downloads/Temp-20230509T132613Z-001/Temp/Shortlisted/20230429_175656.mp4</property>
+    <property name="mlt_service">timewarp</property>
+    <property name="shotcut:producer">avformat</property>
+    <property name="video_delay">0</property>
+    <property name="warp_pitch">0</property>
+    <property name="shotcut:hash">6b35b86f351a5b56df813b2f7e96d00d</property>
+    <property name="shotcut:caption">20230429_175656.mp4 (0.4x)</property>
+    <property name="xml">was here</property>
+    <filter id="filter36" in="00:00:00.500" out="00:00:08.100">
+      <property name="mlt_service">crop</property>
+      <property name="use_profile">1</property>
+      <property name="center">0</property>
+      <property name="center_bias">0</property>
+      <property name="top">64</property>
+      <property name="bottom">540</property>
+      <property name="left">0</property>
+      <property name="right">0</property>
+    </filter>
+  </producer>
+  <producer id="producer19" in="00:00:00.000" out="03:59:59.967">
     <property name="length">04:00:00.000</property>
     <property name="eof">pause</property>
     <property name="resource">/home/aitesam961/Downloads/Temp-20230509T132613Z-001/Temp/IMG_20230429_175816.jpg</property>
@@ -1123,7 +1151,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <property name="shotcut:hash">94390c0e7e6c3db4fdc74b12e77752a9</property>
     <property name="shotcut:caption">IMG_20230429_175816.jpg</property>
     <property name="xml">was here</property>
-    <filter id="filter36" in="00:00:03.133" out="00:00:08.133">
+    <filter id="filter37" in="00:00:04.200" out="00:00:12.233">
       <property name="mlt_service">crop</property>
       <property name="use_profile">1</property>
       <property name="center">0</property>
@@ -1134,12 +1162,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="right">0</property>
       <property name="disable">0</property>
     </filter>
-    <filter id="filter37" in="00:00:03.133" out="00:00:08.133">
+    <filter id="filter38" in="00:00:04.200" out="00:00:12.233">
       <property name="start">1</property>
       <property name="level">0.966</property>
       <property name="mlt_service">brightness</property>
     </filter>
-    <filter id="filter38" in="00:00:03.133" out="00:00:08.133">
+    <filter id="filter39" in="00:00:04.200" out="00:00:12.233">
       <property name="argument"></property>
       <property name="geometry">270 843 1458 129 1</property>
       <property name="family">Sans</property>
@@ -1167,13 +1195,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="shotcut:animIn">00:00:00.000</property>
       <property name="shotcut:animOut">00:00:00.000</property>
     </filter>
-    <filter id="filter39" in="00:00:03.133" out="00:00:08.133">
-      <property name="transition">frei0r.composition</property>
-      <property name="mlt_image_format">rgba</property>
-      <property name="mlt_service">mask_apply</property>
-      <property name="transition.threads">0</property>
+    <filter id="filter40" in="00:00:04.200" out="00:00:12.233">
+      <property name="start">1</property>
+      <property name="level">00:00:07.067=1;00:00:08.033=0</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeOutBrightness</property>
+      <property name="alpha">1</property>
+      <property name="shotcut:animOut">00:00:01.000</property>
     </filter>
-    <filter id="filter40" in="00:00:03.533" out="00:00:08.133">
+    <filter id="filter41" in="00:00:04.200" out="00:00:12.233">
       <property name="background">color:#00000000</property>
       <property name="mlt_service">affine</property>
       <property name="shotcut:filter">affineSizePosition</property>
@@ -1187,12 +1217,18 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="transition.threads">0</property>
       <property name="transition.fix_rotate_x">00:00:00.000=0;00:00:04.600=0</property>
     </filter>
+    <filter id="filter42" in="00:00:04.200" out="00:00:12.233">
+      <property name="transition">frei0r.composition</property>
+      <property name="mlt_image_format">rgba</property>
+      <property name="mlt_service">mask_apply</property>
+      <property name="transition.threads">0</property>
+    </filter>
   </producer>
-  <tractor id="tractor19" in="00:00:00.000" out="00:00:00.633">
+  <tractor id="tractor7" in="00:00:00.000" out="00:00:00.300">
     <property name="shotcut:transition">lumaMix</property>
-    <track producer="producer17" in="00:00:10.633" out="00:00:11.267"/>
-    <track producer="producer18" in="00:00:03.533" out="00:00:04.167"/>
-    <transition id="transition38" out="00:00:00.633">
+    <track producer="producer18" in="00:00:07.767" out="00:00:08.067"/>
+    <track producer="producer19" in="00:00:04.200" out="00:00:04.500"/>
+    <transition id="transition14" out="00:00:00.300">
       <property name="a_track">0</property>
       <property name="b_track">1</property>
       <property name="factory">loader</property>
@@ -1200,12 +1236,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="alpha_over">1</property>
       <property name="fix_background_alpha">1</property>
     </transition>
-    <transition id="transition39" out="00:00:00.633">
+    <transition id="transition15" out="00:00:00.300">
       <property name="a_track">0</property>
       <property name="b_track">1</property>
-      <property name="mlt_service">mix</property>
       <property name="start">-1</property>
       <property name="accepts_blanks">1</property>
+      <property name="mlt_service">mix</property>
     </transition>
   </tractor>
   <playlist id="playlist0">
@@ -1232,20 +1268,20 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <entry producer="producer9" in="00:00:00.000" out="00:00:03.800"/>
     <entry producer="producer10" in="00:00:00.000" out="00:00:07.433"/>
     <entry producer="producer11" in="00:00:00.000" out="00:00:11.667"/>
-    <entry producer="producer12" in="00:00:00.033" out="00:00:11.433"/>
-    <entry producer="producer13" in="00:00:00.433" out="00:00:03.467"/>
+    <entry producer="producer12" in="00:00:00.033" out="00:00:17.800"/>
+    <entry producer="producer13" in="00:00:00.433" out="00:00:08.333"/>
     <entry producer="tractor14" in="00:00:00.000" out="00:00:00.467"/>
-    <entry producer="producer14" in="00:00:00.500" out="00:00:03.533"/>
+    <entry producer="producer14" in="00:00:00.500" out="00:00:08.500"/>
     <entry producer="tractor15" in="00:00:00.000" out="00:00:00.400"/>
-    <entry producer="producer15" in="00:00:02.633" out="00:00:07.467"/>
+    <entry producer="producer15" in="00:00:02.633" out="00:00:20.100"/>
     <entry producer="tractor16" in="00:00:00.000" out="00:00:00.367"/>
-    <entry producer="producer16" in="00:00:00.400" out="00:00:04.567"/>
+    <entry producer="producer16" in="00:00:00.400" out="00:00:05.733"/>
     <entry producer="tractor17" in="00:00:00.000" out="00:00:00.433"/>
-    <entry producer="chain4" in="00:00:00.967" out="00:00:07.167"/>
+    <entry producer="chain4" in="00:00:00.967" out="00:00:05.833"/>
     <entry producer="tractor18" in="00:00:00.000" out="00:00:00.367"/>
-    <entry producer="producer17" in="00:00:00.800" out="00:00:10.600"/>
-    <entry producer="tractor19" in="00:00:00.000" out="00:00:00.633"/>
-    <entry producer="producer18" in="00:00:04.200" out="00:00:08.133"/>
+    <entry producer="producer18" in="00:00:01.000" out="00:00:07.767"/>
+    <entry producer="tractor7" in="00:00:00.000" out="00:00:00.300"/>
+    <entry producer="producer19" in="00:00:04.533" out="00:00:12.233"/>
   </playlist>
   <chain id="chain3" out="00:00:04.533">
     <property name="length">00:00:04.567</property>
@@ -1381,6 +1417,69 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <property name="creation_time">2023-05-15T09:02:32</property>
     <property name="shotcut:hash">872149913827a3f750d11be92fcd42a1</property>
     <property name="shotcut:caption">UI_Contact.mp4</property>
+    <property name="xml">was here</property>
+  </chain>
+  <chain id="chain13" out="00:00:16.733">
+    <property name="length">00:00:16.767</property>
+    <property name="eof">pause</property>
+    <property name="resource">/home/aitesam961/Downloads/APP_IMU.mp4</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">0</property>
+    <property name="video_index">1</property>
+    <property name="creation_time">2023-05-15T09:15:06</property>
+    <property name="shotcut:hash">723f0e7f7d1be1762ea2032208ba2659</property>
+    <property name="shotcut:caption">APP_IMU.mp4</property>
+    <property name="xml">was here</property>
+  </chain>
+  <chain id="chain14" out="00:00:15.400">
+    <property name="length">00:00:15.433</property>
+    <property name="eof">pause</property>
+    <property name="resource">/home/aitesam961/Downloads/APP_Data_analysis.mp4</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">0</property>
+    <property name="video_index">1</property>
+    <property name="creation_time">2023-05-15T09:32:24</property>
+    <property name="shotcut:hash">5ac0042a2cfa14663a000da11e1821a8</property>
+    <property name="shotcut:caption">APP_Data_analysis.mp4</property>
+    <property name="xml">was here</property>
+  </chain>
+  <chain id="chain15" out="00:00:16.933">
+    <property name="length">00:00:16.967</property>
+    <property name="eof">pause</property>
+    <property name="resource">/home/aitesam961/Downloads/Compact.mp4</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">0</property>
+    <property name="video_index">1</property>
+    <property name="creation_time">2023-05-15T09:48:10</property>
+    <property name="shotcut:hash">a31f583bd6d207feb8a7061f35ea7b4e</property>
+    <property name="shotcut:caption">Compact.mp4</property>
+  </chain>
+  <chain id="chain16" out="00:00:09.667">
+    <property name="length">00:00:09.700</property>
+    <property name="eof">pause</property>
+    <property name="resource">/home/aitesam961/Downloads/Installation.mp4</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">0</property>
+    <property name="video_index">1</property>
+    <property name="creation_time">2023-05-15T09:58:16</property>
+    <property name="shotcut:hash">52dab4f1d7fa581f576eb49052d0fac3</property>
+    <property name="shotcut:caption">Installation.mp4</property>
+  </chain>
+  <chain id="chain17" out="00:00:15.300">
+    <property name="length">00:00:15.333</property>
+    <property name="eof">pause</property>
+    <property name="resource">/home/aitesam961/Downloads/Outro.mp4</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">0</property>
+    <property name="video_index">1</property>
+    <property name="creation_time">2023-05-15T10:07:26</property>
+    <property name="shotcut:hash">fc1e4e3e7b9ed548a4efe88c5c0e4294</property>
+    <property name="shotcut:caption">Outro.mp4</property>
   </chain>
   <playlist id="playlist1">
     <property name="shotcut:audio">1</property>
@@ -1402,17 +1501,45 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <entry producer="chain11" in="00:00:00.000" out="00:00:13.033"/>
     <blank length="00:00:00.333"/>
     <entry producer="chain12" in="00:00:00.000" out="00:00:04.900"/>
+    <blank length="00:00:00.900"/>
+    <entry producer="chain13" in="00:00:00.000" out="00:00:16.733"/>
+    <blank length="00:00:01.033"/>
+    <entry producer="chain14" in="00:00:00.000" out="00:00:15.400"/>
+    <blank length="00:00:01.600"/>
+    <entry producer="chain15" in="00:00:00.000" out="00:00:16.933"/>
+    <blank length="00:00:00.900"/>
+    <entry producer="chain16" in="00:00:00.000" out="00:00:09.667"/>
+    <blank length="00:00:00.233"/>
+    <entry producer="chain17" in="00:00:00.000" out="00:00:15.300"/>
   </playlist>
+  <chain id="chain18" out="00:02:41.233">
+    <property name="length">00:02:41.267</property>
+    <property name="eof">pause</property>
+    <property name="resource">/home/aitesam961/Downloads/y2mate.com - ROYALTY FREE Business Technology Music Presentation Background Music Royalty Free by MUSIC4VIDEO.mp3</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">0</property>
+    <property name="video_index">-1</property>
+    <property name="creation_time">2023-05-13T15:24:00</property>
+    <property name="shotcut:hash">b68d6c80eea53859ab8675cd1912b86a</property>
+    <property name="shotcut:caption">y2mate.com - ROYALTY FREE Business Technology Music Presentation Background Music Royalty Free by MUSIC4VIDEO.mp3</property>
+    <filter id="filter43" out="00:02:41.233">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="level">-19.4</property>
+      <property name="mlt_service">volume</property>
+    </filter>
+  </chain>
   <playlist id="playlist2">
     <property name="shotcut:audio">1</property>
     <property name="shotcut:name">A2</property>
-    <blank length="00:00:00.033"/>
+    <entry producer="chain18" in="00:00:00.000" out="00:02:41.233"/>
   </playlist>
-  <tractor id="tractor21" title="Shotcut version 23.05.14" in="00:00:00.000" out="00:02:25.300">
+  <tractor id="tractor21" title="Shotcut version 23.05.14" in="00:00:00.000" out="00:02:54.367">
     <property name="shotcut">1</property>
     <property name="shotcut:projectAudioChannels">2</property>
     <property name="shotcut:projectFolder">1</property>
-    <property name="shotcut:scaleFactor">1.20102</property>
+    <property name="shotcut:scaleFactor">0.624125</property>
     <track producer="background"/>
     <track producer="playlist0" hide="audio"/>
     <track producer="playlist1" hide="video"/>
