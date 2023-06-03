@@ -45,8 +45,8 @@
 #define DATABASE_URL "cattle-health-monitoring-chms-default-rtdb.firebaseio.com" 
 
 // Email and password for Each Cattle Node
-#define USER_EMAIL "node1@CHMS.com"
-#define USER_PASSWORD "esp32-node1"
+#define USER_EMAIL "node2@CHMS.com"
+#define USER_PASSWORD "esp32-node2"
 
 
 #define DHTPIN 5
@@ -319,33 +319,33 @@ void loop()
         
         
   }
-   if (Firebase.RTDB.setInt(&fbdo, "Node1/Sensor Orientation",mpu_Orientation)){
+   if (Firebase.RTDB.setInt(&fbdo, "Node2/Sensor Orientation",mpu_Orientation)){
      Serial.println("PASSED Sensor Orientation");
     }
     else {
       Serial.println("FAILED Sensor Orientation");
     }
 
-    if (Firebase.RTDB.setInt(&fbdo, "Node1/IMU Activity",mpu_Activity)){
+    if (Firebase.RTDB.setInt(&fbdo, "Node2/IMU Activity",mpu_Activity)){
           Serial.println("PASSED IMU Activity");
     }
     else {
       Serial.println("FAILED IMU Activity");
     }
 
-    if (Firebase.RTDB.setInt(&fbdo, "Node1/Grazing",Grazing)){
+    if (Firebase.RTDB.setInt(&fbdo, "Node2/Grazing",Grazing)){
           Serial.println("PASSED Grazing");
     }
     else {
       Serial.println("FAILED Grazing");
     }
-    if (Firebase.RTDB.setInt(&fbdo, "Node1/Standing",standing)){
+    if (Firebase.RTDB.setInt(&fbdo, "Node2/Standing",standing)){
           Serial.println("PASSED Standing");
     }
     else {
       Serial.println("FAILED Standing");
     }
-    if (Firebase.RTDB.setInt(&fbdo, "Node1/Loose Ear",loose_ear)){
+    if (Firebase.RTDB.setInt(&fbdo, "Node2/Loose Ear",loose_ear)){
           Serial.println("PASSED Loose Ear");
     }
     else {
@@ -391,14 +391,14 @@ digitalWrite(gasS_trig,LOW);
     //===================================================================
 
 
-    if (Firebase.RTDB.setInt(&fbdo, "Node1/Humidity", dht_humi)){
+    if (Firebase.RTDB.setInt(&fbdo, "Node2/Humidity", dht_humi)){
       Serial.println("PASSED Humidity");
     }
     else {
       Serial.println("FAILED Humidity");
     }
 
-    if (Firebase.RTDB.setInt(&fbdo, "Node1/Environment Temperature",dht_temp )){
+    if (Firebase.RTDB.setInt(&fbdo, "Node2/Environment Temperature",dht_temp )){
       Serial.println("PASSED Environment Temperature ");
     }
     else {
@@ -412,13 +412,13 @@ digitalWrite(gasS_trig,LOW);
 
   //===================================================================
    
-    if (Firebase.RTDB.setInt(&fbdo, "Node1/Heart Rate",beatAvg)){
+    if (Firebase.RTDB.setInt(&fbdo, "Node2/Heart Rate",beatAvg)){
       Serial.println("PASSED Heart Rate");
     }
     else {
       Serial.println("FAILED Heart Rate");
     }
-    if (Firebase.RTDB.setInt(&fbdo, "Node1/Body Contact",FingerON)){
+    if (Firebase.RTDB.setInt(&fbdo, "Node2/Body Contact",FingerON)){
       Serial.println("PASSED Body Contact");
     }
     else {
@@ -426,7 +426,7 @@ digitalWrite(gasS_trig,LOW);
     }
 
     
-    if (Firebase.RTDB.setInt(&fbdo, "Node1/Body Temperature",body_temperature)){
+    if (Firebase.RTDB.setInt(&fbdo, "Node2/Body Temperature",body_temperature)){
       Serial.println("PASSED Body Temperature");
     }
     else {
@@ -445,7 +445,7 @@ digitalWrite(gasS_trig,LOW);
   
    
    
-    if (Firebase.RTDB.setInt(&fbdo, "Node1/Dangerous Gas",dngGasDet)){
+    if (Firebase.RTDB.setInt(&fbdo, "Node2/Dangerous Gas",dngGasDet)){
       Serial.println("PASSED Dangerous Gas");
     }
     else {
