@@ -35,8 +35,8 @@
 
 
 // INITIALIZING WIFI Credentials  ===============================
-#define WIFI_SSID "aitesam961"
-#define WIFI_PASSWORD "aitesam961"
+#define WIFI_SSID "Redmi 10C"
+#define WIFI_PASSWORD "123456789"
 
 // For the following credentials, see examples/Authentications/SignInAsUser/EmailPassword/EmailPassword.ino
 
@@ -371,9 +371,13 @@ void loop()
 */
 
 digitalWrite(gasS_trig,HIGH);
-  if(analogRead(gasSensor)>1550){
+  if(analogRead(gasSensor)>1550 or  dht_temp > 37){
     Serial.print("Dangerous Gas Detected");
     dngGasDet = 1;
+  }
+  else{
+    
+    dngGasDet = 0;
   }
 digitalWrite(gasS_trig,LOW);
 
@@ -452,13 +456,24 @@ digitalWrite(gasS_trig,LOW);
     Serial.print("Dangerous Gas = :");
     Serial.println(dngGasDet);
 
-  if (dngGasDet == 1 or mpu_Orientation == 0 or FingerON==0 or beatAvg <= 40)
+  if (dngGasDet == 1 or mpu_Orientation == 0 or FingerON==0 or beatAvg <= 55 )
   {
     h_status = 0;
   }
   else {
     h_status = 1;
   }
+
+//===================================================================
+
+  if (Firebase.RTDB.setInt(&fbdo, "Node1/Health Status",h_status)){
+      Serial.println("PASSED Health Status");
+  }
+  else {
+    Serial.println("FAILED Health Status");
+  }
+  Serial.print("Health Status = :");
+  Serial.println(h_status);
 // sudo chmod a+rw /dev/ttyUSB0
   
 }
