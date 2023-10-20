@@ -527,7 +527,11 @@ digitalWrite(gasS_trig,LOW);
   else {
     h_status = 1;
   }
-// sudo chmod a+rw /dev/ttyUSB0
+// 
+
+
+
+
   
 }
 

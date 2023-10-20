@@ -1,6 +1,3 @@
-#include <Arduino.h>
-
-
 /**
  * Project: (U-SENSE) Cattle Health Monitoring System
  * Created by Muhammad Aitesam
@@ -13,7 +10,7 @@
 #include <Arduino.h>
 #if defined(ESP32)
 #include <WiFi.h>
-#include <FirebaseESP32.h>
+#include <Firebase_ESP_Client.h>
 #endif
 // For DHT sensor
 #include <DHT.h>
@@ -35,18 +32,18 @@
 
 
 // INITIALIZING WIFI Credentials  ===============================
-#define WIFI_SSID "Redmi 10C"
-#define WIFI_PASSWORD "123456789"
+#define WIFI_SSID "oppof9"
+#define WIFI_PASSWORD "1234567890"
 
 // For the following credentials, see examples/Authentications/SignInAsUser/EmailPassword/EmailPassword.ino
 
 // API Key for Firebase RTDB
-#define API_KEY "AIzaSyAyJaaQV_4GPN3dMBmuAPh9h9aLUVw9Hlk"
-#define DATABASE_URL "cattle-health-monitoring-chms-default-rtdb.firebaseio.com" 
+#define API_KEY "AIzaSyBkA13p8DeA4zfvS6Z2ltFAaN24aeaQK7c"
+#define DATABASE_URL "cattle-disease-detection-default-rtdb.firebaseio.com/" 
 
 // Email and password for Each Cattle Node
 #define USER_EMAIL "node1@CHMS.com"
-#define USER_PASSWORD "esp32-node1"
+#define USER_PASSWORD "node1@CHMS.com"
 
 
 #define DHTPIN 5
@@ -84,10 +81,11 @@ Adafruit_MPU6050 mpu;
 uint8_t mpu_loop_control = 0;
 int mpu_Orientation ;
 int mpu_Activity ;
-int Grazing = 0;
-int standing = 0;
-int h_status = 0;
+int Grazing   = 0;
+int standing  = 0;
+int s_status  = 0;
 int loose_ear = 0;
+int disease   = 0;
 
 void setup()
 {
@@ -299,53 +297,56 @@ void loop()
     else
     {
         
-        mpu_Orientation = 1;
+      mpu_Orientation = 1;
+
+      if(( a.acceleration.x <11 &&  a.acceleration.x >7)&&(a.acceleration.z < 6 &&  a.acceleration.z >-2)){
+        mpu_Activity = 1;
+        standing = 1;
+        Grazing  = 0;
+      }
+      else if((a.acceleration.x <8  &&  a.acceleration.x >4)&&(a.acceleration.z <0  &&  a.acceleration.z >-8)){
+        mpu_Activity = 2;
+        standing = 0;
+        Grazing  = 1;
+      }
+      if((a.acceleration.y >9 &&  a.acceleration.y <-4)&&(a.acceleration.z >-5 &&  a.acceleration.z <-3))
+      {
+        mpu_Activity = 3;
+        loose_ear = 1;
+      }
         
-        if(( a.acceleration.x <11 &&  a.acceleration.x >7)&&(a.acceleration.z < 6 &&  a.acceleration.z >-2)){
-          mpu_Activity = 1;
-          standing = 1;
-          Grazing  = 0;
-        }
-        else if((a.acceleration.x <8  &&  a.acceleration.x >4)&&(a.acceleration.z <0  &&  a.acceleration.z >-8)){
-          mpu_Activity = 2;
-          standing = 0;
-          Grazing  = 1;
-        }
-        if((a.acceleration.y >9 &&  a.acceleration.y <-4)&&(a.acceleration.z >-5 &&  a.acceleration.z <-3))
-        {
-          mpu_Activity = 3;
-          loose_ear = 1;
-        }
         
-        
-  }
-   if (Firebase.RTDB.setInt(&fbdo, "Node1/N2Sensor Orientation",mpu_Orientation)){
+    }
+
+
+  // send to database
+   if (Firebase.RTDB.setInt(&fbdo, "Node1/Sensor Orientation",mpu_Orientation)){
      Serial.println("PASSED Sensor Orientation");
     }
     else {
       Serial.println("FAILED Sensor Orientation");
     }
 
-    if (Firebase.RTDB.setInt(&fbdo, "Node1/N2IMU Activity",mpu_Activity)){
+    if (Firebase.RTDB.setInt(&fbdo, "Node1/IMU Activity",mpu_Activity)){
           Serial.println("PASSED IMU Activity");
     }
     else {
       Serial.println("FAILED IMU Activity");
     }
 
-    if (Firebase.RTDB.setInt(&fbdo, "Node1/N2Grazing",Grazing)){
+    if (Firebase.RTDB.setInt(&fbdo, "Node1/Grazing",Grazing)){
           Serial.println("PASSED Grazing");
     }
     else {
       Serial.println("FAILED Grazing");
     }
-    if (Firebase.RTDB.setInt(&fbdo, "Node1/N2Standing",standing)){
+    if (Firebase.RTDB.setInt(&fbdo, "Node1/Standing",standing)){
           Serial.println("PASSED Standing");
     }
     else {
       Serial.println("FAILED Standing");
     }
-    if (Firebase.RTDB.setInt(&fbdo, "Node1/N2Loose Ear",loose_ear)){
+    if (Firebase.RTDB.setInt(&fbdo, "Node1/Loose Ear",loose_ear)){
           Serial.println("PASSED Loose Ear");
     }
     else {
@@ -364,41 +365,58 @@ void loop()
   
 }
 
+// Set sensor status
+  if(mpu_Orientation && FingerON == 1 &&  dht_temp > 0){
+    s_status  = 1;
+  }
+  else {
+    s_status  = 0;
+  }
 
 
-/*================================================
-* Gas Detection
-*/
-
-digitalWrite(gasS_trig,HIGH);
-  if(analogRead(gasSensor)>1550 or  dht_temp > 37){
-    Serial.print("Dangerous Gas Detected");
-    dngGasDet = 1;
+  // Disease Detection
+  if(s_status){
+    if(body_temperature > 39 && body_temperature  < 44){
+      disease = 1;
+      // FEVER
+    }
+    else if(body_temperature < 39 && beatAvg  > 90){
+      disease = 2;
+      // BRD
+    }
+    else if( dht_temp < 5 && body_temperature  < 36){
+      disease = 3;
+      // BRD
+    }
+    else{
+      disease = 0;
+    }
   }
   else{
-    
-    dngGasDet = 0;
+    disease = 10;
   }
-digitalWrite(gasS_trig,LOW);
+    
+
+
 
 
   if (Firebase.ready() && (millis() - sendDataPrevMillis > 15000 || sendDataPrevMillis == 0))
   {
-    Serial.println("Firebase Ready");
+    Serial.println("Firebase Ready\n");
     sendDataPrevMillis = millis();
     // Write an Int number on the database path test/int
 
     //===================================================================
 
 
-    if (Firebase.RTDB.setInt(&fbdo, "Node1/N2Humidity", dht_humi)){
+    if (Firebase.RTDB.setInt(&fbdo, "Node1/Humidity", dht_humi)){
       Serial.println("PASSED Humidity");
     }
     else {
       Serial.println("FAILED Humidity");
     }
 
-    if (Firebase.RTDB.setInt(&fbdo, "Node1/N2Environment Temperature",dht_temp )){
+    if (Firebase.RTDB.setInt(&fbdo, "Node1/Environment Temperature",dht_temp )){
       Serial.println("PASSED Environment Temperature ");
     }
     else {
@@ -412,13 +430,13 @@ digitalWrite(gasS_trig,LOW);
 
   //===================================================================
    
-    if (Firebase.RTDB.setInt(&fbdo, "Node1/N2Heart Rate",beatAvg)){
+    if (Firebase.RTDB.setInt(&fbdo, "Node1/Heart Rate",beatAvg)){
       Serial.println("PASSED Heart Rate");
     }
     else {
       Serial.println("FAILED Heart Rate");
     }
-    if (Firebase.RTDB.setInt(&fbdo, "Node1/N2Body Contact",FingerON)){
+    if (Firebase.RTDB.setInt(&fbdo, "Node1/Body Contact",FingerON)){
       Serial.println("PASSED Body Contact");
     }
     else {
@@ -426,7 +444,7 @@ digitalWrite(gasS_trig,LOW);
     }
 
     
-    if (Firebase.RTDB.setInt(&fbdo, "Node1/N2Body Temperature",body_temperature)){
+    if (Firebase.RTDB.setInt(&fbdo, "Node1/Body Temperature",body_temperature)){
       Serial.println("PASSED Body Temperature");
     }
     else {
@@ -442,40 +460,29 @@ digitalWrite(gasS_trig,LOW);
     Serial.println(body_temperature);
    
   //===================================================================
-  
-   
-   
-    if (Firebase.RTDB.setInt(&fbdo, "Node1/N2Dangerous Gas",dngGasDet)){
-      Serial.println("PASSED Dangerous Gas");
-    }
-    else {
-      Serial.println("FAILED Dangerous Gas");
-    }
-    
-  }
-    Serial.print("Dangerous Gas = :");
-    Serial.println(dngGasDet);
 
-  if (dngGasDet == 1 or mpu_Orientation == 0 or FingerON==0 or beatAvg <= 55 )
-  {
-    h_status = 0;
+  if (Firebase.RTDB.setInt(&fbdo, "Node1/Sensor Status",s_status)){
+      Serial.println("PASSED Sensor Status");
   }
   else {
-    h_status = 1;
+    Serial.println("FAILED Sensor Status");
   }
+  Serial.print("Health Status = :");
+  Serial.println(s_status);
 
-//===================================================================
-
-  if (Firebase.RTDB.setInt(&fbdo, "Node1/N2Health Status",h_status)){
+  // ==================================================================
+  
+  if (Firebase.RTDB.setInt(&fbdo, "Node1/Disease",disease)){
       Serial.println("PASSED Health Status");
   }
   else {
-    Serial.println("FAILED Health Status");
+    Serial.println("FAILED Disease");
   }
-  Serial.print("Health Status = :");
-  Serial.println(h_status);
-// sudo chmod a+rw /dev/ttyUSB0
+  Serial.print("Disease = :");
+  Serial.println(disease);
 
- Serial.println("=================NODE2==================");
+
+// sudo chmod a+rw /dev/ttyUSB0
   
+  }
 }
